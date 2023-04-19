@@ -2,7 +2,7 @@
 
 Just takes an image and does stuff which you want done on the image.
 
-
+---
 
 To start your Phoenix server:
 
