@@ -43,15 +43,28 @@ window.liveSocket = liveSocket
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
+	document.getElementById('file').onchange = function() {
+		var src = URL.createObjectURL(this.files[0])
+		const image_element =
+			document.getElementById('image');
+		image_element.src = src;
+		image_element.classList.remove("grayscale", "invert");
+
+	}
 	document.getElementById("myForm").addEventListener("submit", function(e) {
 		e.preventDefault();
 		const input = document.querySelector('input[type="file"]');
 		const file = input.files[0];
+		if (!file) return;
 		const data = new FormData();
 		data.append('file', file);
 		fetch("https://documentstoreelixirtest.tusqasi.repl.co/api/upload_image", {
 			method: "POST",
 			body: data,
-		})
+		}).then((s) =>
+			document.getElementById("sent_alert").class
+		)
 	});
 });
+
+
